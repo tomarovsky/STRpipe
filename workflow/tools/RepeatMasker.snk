@@ -1,16 +1,16 @@
 rule repeatmasker:
     input:
-        fa = {genome}
+        fa = {fasta_prefix}
     output:
-        out = "%s/{genome}.out" % repeatmasker_dir,
-        tbl = "%s/{genome}.tbl" % repeatmasker_dir,
-        masked = "%s/{genome}.masked" % repeatmasker_dir,
-        catgz = "%s/{genome}.cat.gz" % repeatmasker_dir
+        out = "%s/{fasta_prefix}.out" % repeatmasker_dir,
+        tbl = "%s/{fasta_prefix}.tbl" % repeatmasker_dir,
+        masked = "%s/{fasta_prefix}.masked" % repeatmasker_dir,
+        catgz = "%s/{fasta_prefix}.cat.gz" % repeatmasker_dir
     threads:
         N_threads
     shell:
         "RepeatMasker -pa {threads} -species {repeatmasker_base} {input.fa}; "
-        "mv {OUT_FILE} {output.out}; "
-        "mv {TBL_FILE} {output.tbl}; "
-        "mv {MASKED_FILE} {output.masked}; "
-	    "mv {CATGZ_FILE} {output.catgz}; "
+        "mv {fasta_prefix}.out {output.out}; "
+        "mv {fasta_prefix}.tbl {output.tbl}; "
+        "mv {fasta_prefix}.masked {output.masked}; "
+	    "mv {fasta_prefix}.cat.gz {output.catgz}; "
