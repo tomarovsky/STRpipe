@@ -1,10 +1,12 @@
+datfile = {fasta_prefix} + "." + ".".join(TRF_parameters.split()) + ".dat"
+
 rule trf:
     input:
-        fa = GENOME_FA
+        fa = {fasta_prefix}.fasta
     output:
-        dat = DAT_FILE_OUTPATH
+        dat = "{trf_dir}/{fasta_prefix}" + "." + ".".join(TRF_parameters.split()) + ".dat"
     params:
-        TRF_PARAMETERS
+        TRF_parameters
     shell:
         "trf {input.fa} {params} -d -h || true; "
-        "mv {DAT_FILE} {output.dat}; "
+        "mv {datfile} {output.dat}; "
