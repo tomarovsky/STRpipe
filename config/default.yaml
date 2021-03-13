@@ -8,6 +8,6 @@
 "windowmasker_dir": "WindowMasker/"
 
 # ---- tool options ----
-"RM_BASE": "carnivore"
-"N_THREADS": 4
-"TRF_PARAMETERS": "2 7 7 80 10 50 500"
+"repeatmasker_base": "carnivore"
+"N_threads": 4
+"TRF_parameters": "2 7 7 80 10 50 500"

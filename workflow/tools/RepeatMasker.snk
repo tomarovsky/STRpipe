@@ -1,16 +1,16 @@
 rule repeatmasker:
     input:
-        fa = GENOME_FA
+        fa = {genome}
     output:
-        out = OUT_FILE_OUTPATH,
-        tbl = TBL_FILE_OUTPATH,
-        masked = MASKED_FILE_OUTPATH,
-        catgz = CATGZ_FILE_OUTPATH
+        out = "%s/{genome}.out" % repeatmasker_dir,
+        tbl = "%s/{genome}.tbl" % repeatmasker_dir,
+        masked = "%s/{genome}.masked" % repeatmasker_dir,
+        catgz = "%s/{genome}.cat.gz" % repeatmasker_dir
     threads:
-        N_THREADS
+        N_threads
     shell:
-        "/home/skliver/Soft/RepeatMasker/RepeatMasker -pa {threads} -species {RM_BASE} {input.fa}; "
+        "RepeatMasker -pa {threads} -species {repeatmasker_base} {input.fa}; "
         "mv {OUT_FILE} {output.out}; "
         "mv {TBL_FILE} {output.tbl}; "
         "mv {MASKED_FILE} {output.masked}; "
-	"mv {CATGZ_FILE} {output.catgz}; "
+	    "mv {CATGZ_FILE} {output.catgz}; "
