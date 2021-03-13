@@ -1,0 +1,6 @@
+"GENOME_BASE_PATH": ""
+"ANNO_BASE_PATH": ""
+"GENOME_FA": "mzib.min_150.pseudohap2.1_HiC.fasta"
+"RM_BASE": "carnivore"
+"N_THREADS": 4
+"TRF_PARAMETERS": "2 7 7 80 10 50 500"

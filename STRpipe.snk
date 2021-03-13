@@ -1,0 +1,5 @@
+import os
+# configfile: "config.yaml"
+
+GENOME_BASE_PATH = config["GENOME_BASE_PATH"] # "" == "./"
+ANNO_BASE_PATH = config["ANNO_BASE_PATH"]
