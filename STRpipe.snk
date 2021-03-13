@@ -3,3 +3,18 @@ import os
 
 GENOME_BASE_PATH = config["GENOME_BASE_PATH"] # "" == "./"
 ANNO_BASE_PATH = config["ANNO_BASE_PATH"]
+
+# initialization
+def create_files_and_directories():
+    import os
+    # Create directories
+    os.makedirs(TRF_DIR, exist_ok=True)
+    os.makedirs(WM_DIR, exist_ok=True)
+    os.makedirs(RM_DIR, exist_ok=True)
+    # Create files
+
+create_files_and_directories()
+
+rule all:
+    input:
+        MASKED_FA_GZ

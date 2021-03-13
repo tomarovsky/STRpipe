@@ -1,0 +1,10 @@
+rule trf:
+    input:
+        fa = GENOME_FA
+    output:
+        dat = DAT_FILE_OUTPATH
+    params:
+        TRF_PARAMETERS
+    shell:
+        "trf {input.fa} {params} -d -h || true; "
+        "mv {DAT_FILE} {output.dat}; "

@@ -1,0 +1,34 @@
+rule trf_dat_to_gff:
+    input:
+        DAT_FILE_OUTPATH
+    output:
+        DAT_GFF_FILE
+    shell:
+        "~/tools/Biocrutch/scripts/RepeatMasking/TRF.py -i {input} -o {DAT_GFF_FILE_PREFIX}; "
+
+
+rule repeatmasker_out_to_gff:
+    input:
+        OUT_FILE_OUTPATH
+    output:
+        OUT_GFF_FILE
+    shell:
+        "~/tools/Biocrutch/scripts/RepeatMasking/RepeatMasker.py -i {input} -o {OUT_GFF_FILE_PREFIX}; "
+
+rule windowmasker_interval_to_gff:
+    input:
+        INTERVAL_FILE_OUTPATH
+    output:
+        INTERVAL_GFF_FILE
+    shell:
+        "~/tools/Biocrutch/scripts/RepeatMasking/WindowMasker.py -i {input} -o {INTERVAL_GFF_FILE_PREFIX}; "
+
+rule get_concat_sort_gff_gz:
+    input:
+        DAT_GFF_FILE,
+        OUT_GFF_FILE,
+        INTERVAL_GFF_FILE
+    output:
+        CONCAT_SORT_GFF_GZ
+    shell:
+        "zcat {input} | sort -k1,1 -k4,4n -k5,5n | gzip > {output}; "

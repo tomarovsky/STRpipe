@@ -1,0 +1,9 @@
+rule windowmasker:
+    input:
+        fa = GENOME_FA
+    output:
+        counts = COUNTS_FILE_OUTPATH,
+        interval = INTERVAL_FILE_OUTPATH
+    shell:
+        "windowmasker -in {input.fa} -infmt fasta -mk_counts -parse_seqids -out {output.counts}; "
+        "windowmasker -in {input.fa} -infmt fasta -ustat {output.counts} -outfmt interval -parse_seqids -out {output.interval}; "

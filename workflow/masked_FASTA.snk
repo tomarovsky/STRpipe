@@ -1,0 +1,9 @@
+rule get_masked_fasta_gz:
+    input:
+        gff = CONCAT_SORT_GFF_GZ,
+        fa = GENOME_FA
+    output:
+        MASKED_FA_GZ
+    shell:
+        "bedtools maskfasta -soft -bed {input.gff} -fi {input.fa} -fo {MASKED_FA}; "
+        "gzip {MASKED_FA}; "
