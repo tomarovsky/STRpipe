@@ -11,14 +11,14 @@ repeatmasker_dir = "{0}/{1}".format(config["out_dir"], config["repeatmasker_dir"
 windowmasker_dir = "{0}/{1}".format(config["out_dir"], config["windowmasker_dir"]).replace("//", "/")
 
 
-# initialization
-def create_files_and_directories():
-    import os
-    # Create directories
-    os.makedirs(trf_dir, exist_ok=True)
-    os.makedirs(repeatmasker_dir, exist_ok=True)
-    os.makedirs(windowmasker_dir, exist_ok=True)
-    # Create files
+# # initialization
+# def create_files_and_directories():
+#     import os
+#     # Create directories
+#     os.makedirs(trf_dir, exist_ok=True)
+#     os.makedirs(repeatmasker_dir, exist_ok=True)
+#     os.makedirs(windowmasker_dir, exist_ok=True)
+#     # Create files
 
 create_files_and_directories()
 
