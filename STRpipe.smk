@@ -1,9 +1,10 @@
 import os
 # configfile: "config.yaml"
 
-# fasta_prefix = os.path.splitext(config["genome"])[0]
+GENOME_PREFIX = os.path.splitext(config["genome"])[0]
 
 # paths
+genome_path = config["genome_path"]
 trf_dir = "{0}/{1}".format(config["out_dir"], config["trf_dir"]).replace("//", "/")
 repeatmasker_dir = "{0}/{1}".format(config["out_dir"], config["repeatmasker_dir"]).replace("//", "/")
 windowmasker_dir = "{0}/{1}".format(config["out_dir"], config["windowmasker_dir"]).replace("//", "/")
@@ -22,7 +23,7 @@ create_files_and_directories()
 
 rule all:
     input:
-        "{0}/{genome}.repeatmasker.trf.windowmasker.fasta.gz".format(config["out_dir"])
+        expand(genome_path / "{genome}.repeatmasker.trf.windowmasker.fasta.gz", genome=GENOME_PREFIX)
     shell: 
         "echo finished!"
 

@@ -2,7 +2,7 @@ datfile = {fasta_prefix} + "." + ".".join(TRF_parameters.split()) + ".dat"
 
 rule trf:
     input:
-        fa = {fasta_prefix}.fasta
+        fa = expand("{genome}.fasta", genome=config["genome"])
     output:
         dat = "{trf_dir}/{fasta_prefix}" + "." + ".".join(TRF_parameters.split()) + ".dat"
     params:

@@ -1,7 +1,11 @@
 # ---- input fasta file path ----
 # use '--config genome=' at startup
 
+# ---- input files ----
+"genome": "genome.fasta"
+
 # ---- paths ----
+"genome_path": "./"
 "out_dir": "./"
 "trf_dir": "TRF/"
 "repeatmasker_dir": "RepeatMasker/"

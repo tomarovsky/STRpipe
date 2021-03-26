@@ -1,6 +1,6 @@
 rule repeatmasker:
     input:
-        fa = {fasta_prefix}.fasta
+        fa = expand("{genome}.fasta", genome=config["genome"])
     output:
         out = "%s/{fasta_prefix}.out" % repeatmasker_dir,
         tbl = "%s/{fasta_prefix}.tbl" % repeatmasker_dir,

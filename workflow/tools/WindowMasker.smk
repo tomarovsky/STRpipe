@@ -1,6 +1,6 @@
 rule windowmasker:
     input:
-        fa = {fasta_prefix}.fasta
+        fa = expand("{genome_path}/{genome}.fasta", genome_path=config["genome_path"], genome=config["genome"])
     output:
         counts = {windowmasker_dir}/{fasta_prefix}.counts,
         interval = {windowmasker_dir}/{fasta_prefix}.interval
