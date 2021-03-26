@@ -3,8 +3,10 @@ rule trf_dat_to_gff:
         rules.trf.output.dat
     output:
         os.path.splitext(rules.trf.output.dat)[0] + ".gff.gz"
+    params:
+        tools=config["tools_path"]
     shell:
-        "~/tools/Biocrutch/scripts/RepeatMasking/TRF.py -i {input} -o {output}; "
+        "{params.tools}/Biocrutch/scripts/RepeatMasking/TRF.py -i {input} -o {output}; "
 
 
 rule repeatmasker_out_to_gff:
@@ -12,16 +14,20 @@ rule repeatmasker_out_to_gff:
         rules.repeatmasker.output.out
     output:
         os.path.splitext(rules.repeatmasker.output.out)[0] + ".gff.gz"
+    params:
+        tools=config["tools_path"]
     shell:
-        "~/tools/Biocrutch/scripts/RepeatMasking/RepeatMasker.py -i {input} -o {output}; "
+        "{params.tools}/Biocrutch/scripts/RepeatMasking/RepeatMasker.py -i {input} -o {output}; "
 
 rule windowmasker_interval_to_gff:
     input:
         rules.windowmasker.output.interval
     output:
         os.path.splitext(rules.windowmasker.output.interval)[0] + ".gff.gz"
+    params:
+        tools=config["tools_path"]
     shell:
-        "~/tools/Biocrutch/scripts/RepeatMasking/WindowMasker.py -i {input} -o {output}; "
+        "{params.tools}/Biocrutch/scripts/RepeatMasking/WindowMasker.py -i {input} -o {output}; "
 
 rule get_concat_sort_gff_gz:
     input:

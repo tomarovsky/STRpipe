@@ -1,16 +1,16 @@
 rule repeatmasker:
     input:
-        fa = expand("{genome}.fasta", genome=config["genome"])
+        fa = GENOME_PATH / "{genome}.fasta"
     output:
-        out = "%s/{fasta_prefix}.out" % repeatmasker_dir,
-        tbl = "%s/{fasta_prefix}.tbl" % repeatmasker_dir,
-        masked = "%s/{fasta_prefix}.masked" % repeatmasker_dir,
-        catgz = "%s/{fasta_prefix}.cat.gz" % repeatmasker_dir
+        out = "%s/{genome}.out" % repeatmasker_dir,
+        tbl = "%s/{genome}.tbl" % repeatmasker_dir,
+        masked = "%s/{genome}.masked" % repeatmasker_dir,
+        catgz = "%s/{genome}.cat.gz" % repeatmasker_dir
     threads:
         N_threads
     shell:
         "RepeatMasker -pa {threads} -species {repeatmasker_base} {input.fa}; "
-        "mv {fasta_prefix}.out {output.out}; "
-        "mv {fasta_prefix}.tbl {output.tbl}; "
-        "mv {fasta_prefix}.masked {output.masked}; "
-	    "mv {fasta_prefix}.cat.gz {output.catgz}; "
+        "mv {genome}.out {output.out}; "
+        "mv {genome}.tbl {output.tbl}; "
+        "mv {genome}.masked {output.masked}; "
+	    "mv {genome}.cat.gz {output.catgz}; "

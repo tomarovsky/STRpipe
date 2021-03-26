@@ -12,6 +12,7 @@
 "windowmasker_dir": "WindowMasker/"
 
 # ---- tool options ----
+"tools_path": "~/tools/Biocrutch/"
 "repeatmasker_base": "carnivore"
 "N_threads": 4
 "TRF_parameters": "2 7 7 80 10 50 500"
