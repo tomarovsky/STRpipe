@@ -1,7 +1,7 @@
 import os
 # configfile: "config.yaml"
 
-fasta_prefix = os.path.splitext(config["genome"])[0]
+# fasta_prefix = os.path.splitext(config["genome"])[0]
 
 # paths
 trf_dir = "{0}/{1}".format(config["out_dir"], config["trf_dir"]).replace("//", "/")
@@ -22,10 +22,9 @@ create_files_and_directories()
 
 rule all:
     input:
-        "{fasta_prefix}.repeatmasker.trf.windowmasker.fasta.gz"
+        "{0}/{genome}.repeatmasker.trf.windowmasker.fasta.gz".format(config["out_dir"])
     shell: 
         "echo finished!"
-
 
 
 include: "workflow/tools/TRF.snk"

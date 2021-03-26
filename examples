@@ -1,0 +1,1 @@
+snakemake --snakefile STRpipe.smk --configfile config/default.yaml
